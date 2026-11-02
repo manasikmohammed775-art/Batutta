@@ -2,80 +2,237 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Batutta - بطوطة الحقيقية</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Batutta - تواصل برتقالي</title>
 <meta name="theme-color" content="#FF7A00">
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-:root{--o:#FF7A00;--l:#FFF1E6;--bg:#FFFBF5}
+:root{--o:#FF7A00;--o2:#FF9F45;--bg:#FAFAFA;--b:#DBDBDB;--p:#FF2D95;--c:#111}
 *{font-family:Tajawal,sans-serif;box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg)}
-header{background:linear-gradient(135deg,#FF7A00,#FF9F45);padding:14px;color:#fff;text-align:center;border-radius:0 0 22px 22px;position:sticky;top:0}
-#ava{width:68px;height:68px;background:#fff;border-radius:50%;margin:auto;display:flex;align-items:center;justify-content:center;font-size:38px;transition:.3s}
-#ava.talk{animation:t .5s infinite;box-shadow:0 0 0 8px rgba(255,255,255,.3)}
-@keyframes t{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
-.container{max-width:520px;margin:auto;padding:10px 10px 90px}
-.card{background:#fff;border-radius:20px;padding:10px;box-shadow:0 4px 20px rgba(0,0,0,.06);border:1px solid #FFE5CC}
-.chat{height:55vh;overflow:auto;display:flex;flex-direction:column;gap:10px;padding:6px}
-.msg{max-width:85%;padding:12px 14px;border-radius:18px;font-size:14px;line-height:1.7}
-.msg.bot{background:var(--l);border:1px solid #FFD6B0;align-self:flex-start;border-bottom-right-radius:6px}
-.msg.user{background:var(--o);color:#fff;align-self:flex-end;border-bottom-left-radius:6px}
-.quick{display:flex;gap:8px;overflow:auto;padding:8px 2px}
-.quick button{white-space:nowrap;background:#fff;border:1.5px solid #FF7A00;color:#FF7A00;padding:7px 12px;border-radius:99px;font-weight:700;font-size:12px;flex-shrink:0}
-.controls{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #FFE5CC;padding:10px;max-width:520px;margin:auto;display:flex;gap:8px}
-.controls input{flex:1;padding:13px 15px;border-radius:99px;border:1.5px solid #FFD6B0;outline:none}
-.btn{width:48px;height:48px;border-radius:50%;border:none;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer}
-#mic{background:#FFF1E6;color:#FF7A00;border:1.5px solid #FFD6B0}
-#mic.on{background:#FF7A00;color:#fff;animation:pulse 1.2s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,122,0,.6)}100%{box-shadow:0 0 0 14px rgba(255,122,0,0)}}
-#send{background:var(--o);color:#fff}
-.s{width:44px;height:26px;background:#ddd;border-radius:99px;position:relative;cursor:pointer}
-.s.on{background:#FF7A00}
-.s::after{content:'';position:absolute;width:20px;height:20px;background:#fff;border-radius:50%;top:3px;left:3px;transition:.3s}
-.s.on::after{left:21px}
+body{background:var(--bg);color:var(--c);overflow-x:hidden}
+.hidden{display:none!important}
+.app{max-width:480px;margin:0 auto;min-height:100vh;background:#fff;position:relative;box-shadow:0 0 30px rgba(0,0,0,.06)}
+.onb{height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:20px;background:linear-gradient(180deg,#fff 0%,#FFF6EE 100%)}
+.onb-top{display:flex;justify-content:space-between;align-items:center}
+.onb-logo{font-weight:900;font-size:22px;color:var(--o)}
+.onb-skip{font-size:13px;color:#8E8E8E}
+.onb-img{width:200px;height:200px;margin:20px auto;background:linear-gradient(135deg,#FFF1E6,#FFD6B0);border-radius:32px;display:flex;align-items:center;justify-content:center;font-size:90px;box-shadow:0 20px 40px rgba(255,122,0,.2)}
+.onb-h{font-size:26px;font-weight:900;text-align:center;margin:10px 0}
+.onb-p{font-size:14px;color:#666;text-align:center;line-height:1.7;padding:0 20px}
+.dots{display:flex;gap:6px;justify-content:center;margin:20px 0}
+.dot{width:8px;height:8px;border-radius:50%;background:#E5E5E5}
+.dot.on{width:22px;background:var(--o)}
+.btn{width:100%;padding:14px;border-radius:14px;border:none;font-weight:900;font-size:15px;cursor:pointer}
+.btn-o{background:var(--o);color:#fff}
+.btn-b{background:#111;color:#fff}
+.btn-g{background:#F2F2F2;color:#111}
+.auth{padding:20px;min-height:100vh;display:flex;flex-direction:column}
+.auth-head{margin:30px 0 20px;text-align:center}
+.auth-head h1{font-size:32px;font-weight:900;background:linear-gradient(45deg,#FF7A00,#FF2D95);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.auth-head p{font-size:13px;color:#8E8E8E;margin-top:6px}
+.input{width:100%;padding:13px 14px;border:1.5px solid var(--b);border-radius:12px;outline:none;margin-bottom:12px;font-size:14px}
+.input:focus{border-color:var(--o)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.label{font-size:12px;font-weight:700;margin:6px 2px;color:#444}
+.select{width:100%;padding:13px;border:1.5px solid var(--b);border-radius:12px;background:#fff;margin-bottom:12px}
+.topbar{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--b);padding:10px 14px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:900;font-size:20px;background:linear-gradient(45deg,#FF7A00,#FF2D95,#6A5CFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.t-icons{display:flex;gap:14px;font-size:20px}
+.stories{display:flex;gap:12px;overflow:auto;padding:10px 12px;background:#fff;border-bottom:1px solid var(--b)}
+.story{flex:0 0 62px;text-align:center}
+.ring{width:58px;height:58px;border-radius:50%;padding:2px;background:linear-gradient(45deg,#FF7A00,#FF2D95);display:flex;align-items:center;justify-content:center}
+.ring-inner{width:100%;height:100%;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;border:2px solid #fff}
+.sname{font-size:10px;margin-top:4px}
+.post{background:#fff;border-bottom:1px solid #EFEFEF;padding-bottom:6px}
+.ph{display:flex;justify-content:space-between;padding:10px 12px;align-items:center}
+.pu{display:flex;gap:8px;align-items:center}
+.av{width:34px;height:34px;border-radius:50%;background:linear-gradient(45deg,#FF7A00,#FF9F45);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:14px}
+.pname{font-weight:700;font-size:13px}
+.psub{font-size:11px;color:#8E8E8E}
+.pimg{width:100%;aspect-ratio:1/1;background:#f5f5f5;object-fit:cover;display:flex;align-items:center;justify-content:center;font-size:50px}
+.pact{display:flex;justify-content:space-between;padding:8px 12px}
+.pact-l{display:flex;gap:14px;font-size:22px}
+.likes{padding:0 12px;font-weight:700;font-size:13px}
+.cap{padding:4px 12px;font-size:13px;line-height:1.6}
+.coms{padding:0 12px 6px;font-size:12px;color:#555}
+.cinput{display:flex;gap:8px;padding:8px 12px;border-top:1px solid #f2f2f2}
+.cinput input{flex:1;border:none;outline:none;font-size:13px}
+.cinput button{border:none;background:none;color:var(--o);font-weight:700}
+.bottom{position:fixed;bottom:0;left:0;right:0;max-width:480px;margin:0 auto;background:#fff;border-top:1px solid var(--b);display:flex;justify-content:space-around;padding:8px 0;z-index:10}
+.bi{font-size:22px;opacity:.55;cursor:pointer;padding:4px 10px;border-radius:10px}
+.bi.on{opacity:1;background:#FFF1E6}
+.fab{position:fixed;bottom:74px;right:calc(50% - 210px);width:54px;height:54px;background:linear-gradient(45deg,#FF7A00,#FF2D95);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;box-shadow:0 8px 22px rgba(255,122,0,.4);cursor:pointer;z-index:9}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:flex-end;justify-content:center;z-index:20}
+.modal.show{display:flex}
+.mbox{background:#fff;border-radius:22px 22px 0 0;width:100%;max-width:480px;max-height:88vh;overflow:auto}
+.mh{padding:14px;display:flex;justify-content:space-between;border-bottom:1px solid #efefef;font-weight:700;position:sticky;top:0;background:#fff;z-index:2}
+.chat-list{padding-bottom:60px}
+.chat-item{display:flex;gap:10px;padding:12px;border-bottom:1px solid #f6f6f6;cursor:pointer}
+.call-btns{display:flex;gap:8px;margin-top:6px}
+.call-btns span{background:#f2f2f2;padding:4px 8px;border-radius:20px;font-size:11px;cursor:pointer}
+.searchBox{padding:10px;background:#fff;border-bottom:1px solid var(--b)}
+.searchBox input{width:100%;background:#efefef;border:none;padding:10px 14px;border-radius:10px;outline:none}
+.voice-room{background:linear-gradient(135deg,#111,#333);color:#fff;border-radius:18px;padding:14px;margin:10px 12px;display:flex;justify-content:space-between;align-items:center}
+.live{width:8px;height:8px;background:#ff3b30;border-radius:50%;display:inline-block;animation:pulse 1s infinite}
+@keyframes pulse{0%{opacity:1}50%{opacity:.3}100%{opacity:1}}
+.tag{display:inline-block;background:#FFF1E6;color:var(--o);padding:3px 8px;border-radius:20px;font-size:11px;margin:2px}
 </style>
 </head>
 <body>
-<header>
-<div id="ava">🦆</div>
-<div style="font-weight:900;font-size:20px;margin-top:4px">Batutta - بطوطة الذكية</div>
-<div id="st" style="font-size:11px;background:rgba(0,0,0,.15);display:inline-block;padding:2px 10px;border-radius:99px;margin-top:4px">● متصلة - اضغطي الميكروفون</div>
-</header>
-<div class="container">
-<div class="card">
-<div style="display:flex;justify-content:space-between;padding:6px 2px;font-size:12px"><span>🔊 رد صوتي</span><div id="vt" class="s on" onclick="this.classList.toggle('on');voice=!voice"></div></div>
-<div id="chat" class="chat">
-<div class="msg bot">أهلا يا مناسك! أنا بطوطة الحقيقية 🧡🦆<br><br>🎤 بتكلمي معاي بصوتك<br>🔊 برد ليك بصوتي<br>💾 بتذكر كلامنا<br><br>اضغطي الميكروفون وقولي: عايزة علاج في مصر</div>
+<div class="app" id="app">
+<div id="onb">
+<div class="onb" id="onb1">
+<div class="onb-top"><div class="onb-logo">Batutta 🦆</div><div class="onb-skip" onclick="goAuth()">تخطي</div></div>
+<div class="onb-img">🌍</div>
+<h2 class="onb-h">السياحة مع بطوطة</h2>
+<p class="onb-p">اكتشفي السودان ومصر والعالم، أماكن سياحية، حجوزات، وتجارب ناس حقيقية بلهجتنا السودانية</p>
+<div><div class="dots"><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><button class="btn btn-o" onclick="nextOnb(2)">التالي 🧡</button></div>
 </div>
-<div class="quick">
-<button onclick="ask('علاج في مصر')">🏥 علاج</button>
-<button onclick="ask('منح تركيا')">🎓 منح</button>
-<button onclick="ask('سياحة دبي')">✈️ سياحة</button>
-<button onclick="ask('شغل السعودية')">💼 شغل</button>
-<button onclick="ask('احجزي لي')">📅 احجزي</button>
+<div class="onb hidden" id="onb2">
+<div class="onb-top"><div class="onb-logo">Batutta 🦆</div><div class="onb-skip" onclick="goAuth()">تخطي</div></div>
+<div class="onb-img">🎓</div>
+<h2 class="onb-h">التعليم والمنح</h2>
+<p class="onb-p">منح دراسية، كورسات، قبول جامعات، شرح بالعربي السوداني من ناس جربت قبلك</p>
+<div><div class="dots"><div class="dot"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><button class="btn btn-o" onclick="nextOnb(3)">التالي 📚</button></div>
+</div>
+<div class="onb hidden" id="onb3">
+<div class="onb-top"><div class="onb-logo">Batutta 🦆</div><div class="onb-skip" onclick="goAuth()">تخطي</div></div>
+<div class="onb-img">💼</div>
+<h2 class="onb-h">العمل والفرص</h2>
+<p class="onb-p">وظائف في الخليج، شغل أونلاين، فرص حقيقية، وتنبيهات يومية</p>
+<div><div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div><button class="btn btn-o" onclick="nextOnb(4)">التالي 💼</button></div>
+</div>
+<div class="onb hidden" id="onb4">
+<div class="onb-top"><div class="onb-logo">Batutta 🦆</div><div class="onb-skip" onclick="goAuth()">تخطي</div></div>
+<div class="onb-img">🏥</div>
+<h2 class="onb-h">العلاج والسفر الطبي</h2>
+<p class="onb-p">علاج في مصر والهند وتركيا، دكاترة موثوقين، وتجارب مرضى حقيقية مع بطوطة</p>
+<div><div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot on"></div><div class="dot"></div></div><button class="btn btn-o" onclick="nextOnb(5)">التالي 🏥</button></div>
+</div>
+<div class="onb hidden" id="onb5">
+<div class="onb-top"><div class="onb-logo">Batutta 🦆</div><div class="onb-skip" onclick="goAuth()">تخطي</div></div>
+<div class="onb-img">💬</div>
+<h2 class="onb-h">مشاركة ودردشة</h2>
+<p class="onb-p">انشري تجربتك، احكي قصتك، دردشي مع ناس زيك، ومع بطة الذكية بصوت حقيقي 🔊</p>
+<div><div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot on"></div></div><button class="btn btn-o" onclick="goAuth()">ابدأي الآن 🚀</button></div>
 </div>
 </div>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Batutta - تواصل برتقالي</title>
+<meta name="theme-color" content="#FF7A00">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--o:#FF7A00;--o2:#FF9F45;--bg:#FAFAFA;--b:#DBDBDB;--p:#FF2D95;--c:#111}
+*{font-family:Tajawal,sans-serif;box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--c);overflow-x:hidden}
+.hidden{display:none!important}
+.app{max-width:480px;margin:0 auto;min-height:100vh;background:#fff;position:relative;box-shadow:0 0 30px rgba(0,0,0,.06)}
+.onb{height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:20px;background:linear-gradient(180deg,#fff 0%,#FFF6EE 100%)}
+.onb-top{display:flex;justify-content:space-between;align-items:center}
+.onb-logo{font-weight:900;font-size:22px;color:var(--o)}
+.onb-skip{font-size:13px;color:#8E8E8E}
+.onb-img{width:200px;height:200px;margin:20px auto;background:linear-gradient(135deg,#FFF1E6,#FFD6B0);border-radius:32px;display:flex;align-items:center;justify-content:center;font-size:90px;box-shadow:0 20px 40px rgba(255,122,0,.2)}
+.onb-h{font-size:26px;font-weight:900;text-align:center;margin:10px 0}
+.onb-p{font-size:14px;color:#666;text-align:center;line-height:1.7;padding:0 20px}
+.dots{display:flex;gap:6px;justify-content:center;margin:20px 0}
+.dot{width:8px;height:8px;border-radius:50%;background:#E5E5E5}
+.dot.on{width:22px;background:var(--o)}
+.btn{width:100%;padding:14px;border-radius:14px;border:none;font-weight:900;font-size:15px;cursor:pointer}
+.btn-o{background:var(--o);color:#fff}
+.btn-b{background:#111;color:#fff}
+.btn-g{background:#F2F2F2;color:#111}
+.auth{padding:20px;min-height:100vh;display:flex;flex-direction:column}
+.auth-head{margin:30px 0 20px;text-align:center}
+.auth-head h1{font-size:32px;font-weight:900;background:linear-gradient(45deg,#FF7A00,#FF2D95);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.auth-head p{font-size:13px;color:#8E8E8E;margin-top:6px}
+.input{width:100%;padding:13px 14px;border:1.5px solid var(--b);border-radius:12px;outline:none;margin-bottom:12px;font-size:14px}
+.input:focus{border-color:var(--o)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.label{font-size:12px;font-weight:700;margin:6px 2px;color:#444}
+.select{width:100%;padding:13px;border:1.5px solid var(--b);border-radius:12px;background:#fff;margin-bottom:12px}
+.topbar{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--b);padding:10px 14px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:900;font-size:20px;background:linear-gradient(45deg,#FF7A00,#FF2D95,#6A5CFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.t-icons{display:flex;gap:14px;font-size:20px}
+.stories{display:flex;gap:12px;overflow:auto;padding:10px 12px;background:#fff;border-bottom:1px solid var(--b)}
+.story{flex:0 0 62px;text-align:center}
+.ring{width:58px;height:58px;border-radius:50%;padding:2px;background:linear-gradient(45deg,#FF7A00,#FF2D95);display:flex;align-items:center;justify-content:center}
+.ring-inner{width:100%;height:100%;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;border:2px solid #fff}
+.sname{font-size:10px;margin-top:4px}
+.post{background:#fff;border-bottom:1px solid #EFEFEF;padding-bottom:6px}
+.ph{display:flex;justify-content:space-between;padding:10px 12px;align-items:center}
+.pu{display:flex;gap:8px;align-items:center}
+.av{width:34px;height:34px;border-radius:50%;background:linear-gradient(45deg,#FF7A00,#FF9F45);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:14px}
+.pname{font-weight:700;font-size:13px}
+.psub{font-size:11px;color:#8E8E8E}
+.pimg{width:100%;aspect-ratio:1/1;background:#f5f5f5;object-fit:cover;display:flex;align-items:center;justify-content:center;font-size:50px}
+.pact{display:flex;justify-content:space-between;padding:8px 12px}
+.pact-l{display:flex;gap:14px;font-size:22px}
+.likes{padding:0 12px;font-weight:700;font-size:13px}
+.cap{padding:4px 12px;font-size:13px;line-height:1.6}
+.coms{padding:0 12px 6px;font-size:12px;color:#555}
+.cinput{display:flex;gap:8px;padding:8px 12px;border-top:1px solid #f2f2f2}
+.cinput input{flex:1;border:none;outline:none;font-size:13px}
+.cinput button{border:none;background:none;color:var(--o);font-weight:700}
+.bottom{position:fixed;bottom:0;left:0;right:0;max-width:480px;margin:0 auto;background:#fff;border-top:1px solid var(--b);display:flex;justify-content:space-around;padding:8px 0;z-index:10}
+.bi{font-size:22px;opacity:.55;cursor:pointer;padding:4px 10px;border-radius:10px}
+.bi.on{opacity:1;background:#FFF1E6}
+.fab{position:fixed;bottom:74px;right:calc(50% - 210px);width:54px;height:54px;background:linear-gradient(45deg,#FF7A00,#FF2D95);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;box-shadow:0 8px 22px rgba(255,122,0,.4);cursor:pointer;z-index:9}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:flex-end;justify-content:center;z-index:20}
+.modal.show{display:flex}
+.mbox{background:#fff;border-radius:22px 22px 0 0;width:100%;max-width:480px;max-height:88vh;overflow:auto}
+.mh{padding:14px;display:flex;justify-content:space-between;border-bottom:1px solid #efefef;font-weight:700;position:sticky;top:0;background:#fff;z-index:2}
+.chat-list{padding-bottom:60px}
+.chat-item{display:flex;gap:10px;padding:12px;border-bottom:1px solid #f6f6f6;cursor:pointer}
+.call-btns{display:flex;gap:8px;margin-top:6px}
+.call-btns span{background:#f2f2f2;padding:4px 8px;border-radius:20px;font-size:11px;cursor:pointer}
+.searchBox{padding:10px;background:#fff;border-bottom:1px solid var(--b)}
+.searchBox input{width:100%;background:#efefef;border:none;padding:10px 14px;border-radius:10px;outline:none}
+.voice-room{background:linear-gradient(135deg,#111,#333);color:#fff;border-radius:18px;padding:14px;margin:10px 12px;display:flex;justify-content:space-between;align-items:center}
+.live{width:8px;height:8px;background:#ff3b30;border-radius:50%;display:inline-block;animation:pulse 1s infinite}
+@keyframes pulse{0%{opacity:1}50%{opacity:.3}100%{opacity:1}}
+.tag{display:inline-block;background:#FFF1E6;color:var(--o);padding:3px 8px;border-radius:20px;font-size:11px;margin:2px}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+<div id="onb">
+<div class="onb" id="onb1">
+<div class="onb-top"><div class="onb-logo">Batutta 🦆</div><div class="onb-skip" onclick="goAuth()">تخطي</div></div>
+<div class="onb-img">🌍</div>
+<h2 class="onb-h">السياحة مع بطوطة</h2>
+<p class="onb-p">اكتشفي السودان ومصر والعالم، أماكن سياحية، حجوزات، وتجارب ناس حقيقية بلهجتنا السودانية</p>
+<div><div class="dots"><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><button class="btn btn-o" onclick="nextOnb(2)">التالي 🧡</button></div>
 </div>
-<div class="controls">
-<button id="mic" class="btn" onclick="toggleMic()">🎤</button>
-<input id="inp" placeholder="اكتبي أو اضغطي الميكروفون..." onkeydown="if(event.key==='Enter')send()">
-<button id="send" class="btn" onclick="send()">➤</button>
+<div class="onb hidden" id="onb2">
+<div class="onb-top"><div class="onb-logo">Batutta 🦆</div><div class="onb-skip" onclick="goAuth()">تخطي</div></div>
+<div class="onb-img">🎓</div>
+<h2 class="onb-h">التعليم والمنح</h2>
+<p class="onb-p">منح دراسية، كورسات، قبول جامعات، شرح بالعربي السوداني من ناس جربت قبلك</p>
+<div><div class="dots"><div class="dot"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><button class="btn btn-o" onclick="nextOnb(3)">التالي 📚</button></div>
 </div>
-<script>
-let voice=true,rec,listen=false,synth=window.speechSynthesis,arVoice=null;
-function initV(){let v=synth.getVoices();arVoice=v.find(x=>x.lang.includes('ar'))||v[0]}
-if(synth.onvoiceschanged!==undefined)synth.onvoiceschanged=initV;initV();
-const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-if(SR){rec=new SR();rec.lang='ar-SA';rec.onstart=()=>{listen=true;mic.classList.add('on');st.innerText='🎤 بسمعك...';ava.classList.add('talk')};rec.onend=()=>{listen=false;mic.classList.remove('on');st.innerText='● متصلة';ava.classList.remove('talk')};rec.onresult=e=>{inp.value=e.results[0][0].transcript;send()}}
-function toggleMic(){if(!rec){alert('استخدمي Chrome');return}if(listen)rec.stop();else rec.start()}
-function speak(t){if(!voice)return;synth.cancel();let u=new SpeechSynthesisUtterance(t.replace(/<br>/g,' ').substring(0,280));u.lang='ar-SA';u.rate=.95;u.pitch=1.15;if(arVoice)u.voice=arVoice;u.onstart=()=>{ava.classList.add('talk');st.innerText='🔊 بطوطة بتتكلم'};u.onend=()=>{ava.classList.remove('talk');st.innerText='● متصلة'};synth.speak(u)}
-const chat=document.getElementById('chat'),inp=document.getElementById('inp'),st=document.getElementById('st'),ava=document.getElementById('ava'),mic=document.getElementById('mic');
-function addMsg(t,w){let d=document.createElement('div');d.className='msg '+w;d.innerHTML=t;chat.appendChild(d);chat.scrollTop=chat.scrollHeight;localStorage.setItem('bat_chat',chat.innerHTML);if(w=='bot')speak(t)}
-function botReply(q){let l=q.toLowerCase(),a="فهمتك: "+q+"<br><br>قولي الدولة والميزانية وانا بجهز خطة كاملة 🧡";if(l.includes('علاج')||l.includes('مصر'))a="للعلاج في مصر 🇪🇬<br>🏥 معهد ناصر - قلب<br>🏥 دار الفؤاد - أورام<br>💰 2000-5000$ شامل السكن والترجمة<br>📄 جواز + تقارير<br><br>أحجز ليك؟ قولي احجزي";else if(l.includes('منح')||l.includes('تركيا')||l.includes('تعليم'))a="منح تركيا الممولة 2026 🇹🇷<br>✅ راتب 350$ + سكن + تذكرة<br>📝 بكتب ليك خطاب نية بالـAI<br>نسبتك كم؟";else if(l.includes('سياحة')||l.includes('دبي'))a="رحلة دبي قروب برتقالي 🧡<br>💰 800$ شامل طيران + فندق 4 نجوم<br>👥 باقي 3 مقاعد!<br>تحجزي؟";else if(l.includes('شغل')||l.includes('عمل'))a="وظائف السعودية 💼<br>ممرضات 4000 ريال<br>معلمات 5000 ريال<br>بجهز ليك CV برتقالي + تدريب صوتي 🎤<br>مجالك شنو؟";else if(l.includes('احجزي')||l.includes('حجز'))a="تمام! أرسلي الاسم + واتساب + الدولة<br>وأحولك لواتساب الحجز 🟢";setTimeout(()=>addMsg(a,'bot'),700)}
-function send(){if(!inp.value.trim())return;addMsg(inp.value,'user');botReply(inp.value);inp.value=''}
-function ask(t){inp.value=t;send()}
-let h=localStorage.getItem('bat_chat');if(h&&h.length>200)chat.innerHTML=h;
-setTimeout(()=>{if(!localStorage.getItem('wel')){speak('أهلا يا مناسك أنا بطوطة الحقيقية بقدر أسمعك وأرد بصوتي');localStorage.setItem('wel','1')}},1200);
-</script>
-</body>
-</html>
+<div class="onb hidden" id="onb3">
+<div class="onb-top"><div class="onb-logo">Batutta 🦆</div><div class="onb-skip" onclick="goAuth()">تخطي</div></div>
+<div class="onb-img">💼</div>
+<h2 class="onb-h">العمل والفرص</h2>
+<p class="onb-p">وظائف في الخليج، شغل أونلاين، فرص حقيقية، وتنبيهات يومية</p>
+<div><div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div><button class="btn btn-o" onclick="nextOnb(4)">التالي 💼</button></div>
+</div>
+<div class="onb hidden" id="onb4">
+<div class="onb-top"><div class="onb-logo">Batutta 🦆</div><div class="onb-skip" onclick="goAuth()">تخطي</div></div>
+<div class="onb-img">🏥</div>
+<h2 class="onb-h">العلاج والسفر الطبي</h2>
+<p class="onb-p">علاج في مصر والهند وتركيا، دكاترة موثوقين، وتجارب مرضى حقيقية مع بطوطة</p>
+<div><div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot on"></div><div class="dot"></div></div><button class="btn btn-o" onclick="nextOnb(5)">التالي 🏥</button></div>
+</div>
+<div class="onb hidden" id="onb5">
+<div class="onb-top"><div class="onb-logo">Batutta 🦆</div><div class="onb-skip" onclick="goAuth()">تخطي</div></div>
+<div class="onb-img">💬</div>
+<h2 class="onb-h">مشاركة ودردشة</h2>
+<p class="onb-p">انشري تجربتك، احكي قصتك، دردشي مع ناس زيك، ومع بطة الذكية بصوت حقيقي 🔊</p>
+<div><div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot on"></div></div><button class="btn btn-o" onclick="goAuth()">ابدأي الآن 🚀</button></div>
+</div>
+</div>
