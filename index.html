@@ -1,9 +1,55 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Batutta</title><style>*{box-sizing:border-box;margin:0;padding:0;font-family:sans-serif}body{background:#FFF6EE}.page{display:none;min-height:100vh;padding:20px;text-align:center}.page.active{display:flex;flex-direction:column;justify-content:space-between}.box{width:180px;height:180px;background:#FFDAB8;border-radius:30px;display:flex;align-items:center;justify-content:center;font-size:80px;margin:30px auto}.btn{width:100%;padding:16px;background:#FF7A00;color:#fff;border:none;border-radius:14px;font-weight:900;font-size:18px}</style></head><body>
-<div id="p1" class="page active"><div><b style="color:#FF7A00">Batutta 🦆</b></div><div class="box">🌍</div><div><h1>السياحة</h1><p>اكتشفي السودان ومصر والعالم</p></div><div><button class="btn" onclick="go(2)">التالي 🧡</button><p onclick="go(6)" style="margin-top:10px;color:#999">تخطي</p></div></div>
-<div id="p2" class="page"><div><b style="color:#FF7A00">Batutta 🦆</b></div><div class="box">🎓</div><div><h1>التعليم</h1><p>منح دراسية وقبول جامعات</p></div><div><button class="btn" onclick="go(3)">التالي 📚</button><p onclick="go(6)" style="margin-top:10px;color:#999">تخطي</p></div></div>
-<div id="p3" class="page"><div><b style="color:#FF7A00">Batutta 🦆</b></div><div class="box">💼</div><div><h1>العمل</h1><p>وظائف في الخليج وشغل اونلاين</p></div><div><button class="btn" onclick="go(4)">التالي 💼</button></div></div>
-<div id="p4" class="page"><div><b style="color:#FF7A00">Batutta 🦆</b></div><div class="box">🏥</div><div><h1>العلاج</h1><p>علاج في مصر والهند وتركيا</p></div><div><button class="btn" onclick="go(5)">التالي 🏥</button></div></div>
-<div id="p5" class="page"><div><b style="color:#FF7A00">Batutta 🦆</b></div><div class="box">💬</div><div><h1>مشاركة ودردشة</h1><p>مع بطة الذكية بصوت 🔊</p></div><div><button class="btn" onclick="go(6)">ابدأي الآن 🚀</button></div></div>
-<div id="p6" class="page" style="justify-content:center"><h1 style="color:#FF7A00">Batutta 🦆</h1><input style="width:100%;padding:12px;margin:6px 0;border:1px solid #ddd;border-radius:10px" placeholder="البريد"><button class="btn" onclick="go(7)">دخول سريع 👩</button></div>
-<div id="p7" class="page" style="background:#fff;text-align:right"><div style="display:flex;justify-content:space-between;border-bottom:1px solid #ddd;padding-bottom:10px"><b style="color:#FF7A00">Batutta 🦆</b><span>🔍 🦆 💬</span></div><div style="margin-top:20px"><div style="background:#FFE9D0;padding:20px;border-radius:12px;text-align:center;font-size:40px">🦆</div><p><b>بطوطة:</b> أهلا بيكم في Batutta Social! أول شبكة برتقالية 🧡</p><p style="margin-top:10px">❤️ 124 💬 📞 📹</p><br><button class="btn" onclick="alert('دردشة مع بطة الذكية 🦆🔊 شغالة!')">جربي بطة الذكية 🦆</button><button class="btn" style="background:#111;margin-top:10px" onclick="alert('مكالمة صوتية 📞 شغالة!')">مكالمة صوتية 📞</button><button class="btn" style="background:#222;margin-top:10px" onclick="alert('مكالمة فيديو 📹 شغالة!')">مكالمة فيديو 📹</button></div></div>
-<script>function go(n){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('p'+n).classList.add('active');}</script></body></html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Batutta 🦆 - بطوطة</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦆</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--o:#FF7A00;--bg:#FFF6EE}
+*{font-family:'Tajawal',sans-serif;box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg)}
+.page{display:none;min-height:100vh;max-width:480px;margin:0 auto;background:#fff}
+.page.active{display:flex;flex-direction:column}
+.onb{padding:24px;background:var(--bg);text-align:center;justify-content:space-between}
+.logo{font-weight:900;font-size:22px;color:var(--o);display:flex;gap:6px}
+.logo i{width:36px;height:36px;background:var(--o);border-radius:10px;display:grid;place-items:center;color:#fff}
+.onb-img{width:220px;height:220px;margin:20px auto;background:linear-gradient(135deg,#FFDAB8,#FFEEDB);border-radius:32px;display:grid;place-items:center;font-size:100px}
+.btn{width:100%;padding:16px;background:var(--o);color:#fff;border:none;border-radius:16px;font-weight:900;font-size:17px}
+.dots{display:flex;gap:8px;justify-content:center;margin:16px 0}
+.dot{width:10px;height:10px;background:#E5D5C5;border-radius:20px}
+.dot.on{background:var(--o);width:28px}
+.top{position:sticky;top:0;background:#fff;padding:12px;border-bottom:1px solid #eee;display:flex;justify-content:space-between}
+.feed{background:#fff}
+.pimg{height:260px;background:#FFF0E0;border-radius:16px;margin:10px 0;display:grid;place-items:center;font-size:70px}
+.btm{position:fixed;bottom:0;left:0;right:0;max-width:480px;margin:0 auto;background:#fff;border-top:1px solid #eee;display:flex;justify-content:space-around;padding:10px 0}
+.input{width:100%;padding:13px;border:1px solid #E8DDD3;border-radius:12px;margin:7px 0}
+</style>
+</head>
+<body>
+
+<div id="p1" class="page active onb">
+<div style="display:flex;justify-content:space-between;width:100%"><div class="logo"><i>🦆</i> Batutta</div><span onclick="go(6)">تخطي</span></div>
+<div><div class="onb-img">🌍</div><h1>السياحة</h1><p>اكتشفي السودان ومصر والعالم</p></div>
+<div style="width:100%"><div class="dots"><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><button class="btn" onclick="go(2)">التالي 🧡</button></div>
+</div>
+
+<div id="p2" class="page onb"><div style="display:flex;justify-content:space-between;width:100%"><div class="logo"><i>🦆</i> Batutta</div><span onclick="go(6)">تخطي</span></div><div><div class="onb-img">🎓</div><h1>التعليم</h1><p>منح وقبول جامعات بلهجتنا</p></div><div style="width:100%"><div class="dots"><div class="dot"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><button class="btn" onclick="go(3)">التالي 📚</button></div></div>
+
+<div id="p3" class="page onb"><div style="display:flex;justify-content:space-between;width:100%"><div class="logo"><i>🦆</i> Batutta</div><span onclick="go(6)">تخطي</span></div><div><div class="onb-img">💼</div><h1>العمل</h1><p>وظائف في الخليج وشغل اونلاين</p></div><div style="width:100%"><div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div><button class="btn" onclick="go(4)">التالي 💼</button></div></div>
+
+<div id="p4" class="page onb"><div style="display:flex;justify-content:space-between;width:100%"><div class="logo"><i>🦆</i> Batutta</div><span onclick="go(6)">تخطي</span></div><div><div class="onb-img">🏥</div><h1>العلاج</h1><p>علاج في مصر والهند وتركيا</p></div><div style="width:100%"><div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot on"></div><div class="dot"></div></div><button class="btn" onclick="go(5)">التالي 🏥</button></div></div>
+
+<div id="p5" class="page onb"><div style="display:flex;justify-content:space-between;width:100%"><div class="logo"><i>🦆</i> Batutta</div><span onclick="go(6)">تخطي</span></div><div><div class="onb-img">💬</div><h1>مشاركة ودردشة</h1><p>مع بطة الذكية بصوت 🔊</p></div><div style="width:100%"><div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot on"></div></div><button class="btn" onclick="go(6)">ابدأي الآن 🚀</button></div></div>
+
+<div id="p6" class="page onb" style="background:#fff"><div style="width:100%"><div class="logo" style="justify-content:center"><i>🦆</i> Batutta</div><h2 style="margin:20px 0">مرحب بيك 🧡</h2></div><div style="width:100%"><input class="input" placeholder="الاسم الكامل"><input class="input" placeholder="العمر"><input class="input" placeholder="البريد أو الهاتف"><input class="input" type="password" placeholder="كلمة المرور"><button class="btn" onclick="go(7)">إنشاء حساب 📱</button><button class="btn" style="background:#F2E8DF;color:#000;margin-top:10px" onclick="go(7)">دخول سريع كضيفة 👩</button></div></div>
+
+<div id="p7" class="page feed"><div class="top"><div class="logo"><i>🦆</i> Batutta</div><div>🔍 🦆 💬</div></div><div class="pimg">🦆🧡</div><div style="padding:12px"><b>بطوطة الرسمية ✅</b><br>أهلا بيكم في Batutta Social! أول شبكة برتقالية 🇸🇩<br><br><button class="btn" onclick="speak('أهلا يا مناسك في بطوطة')">🔊 بطة الذكية تتكلم</button><br><br><div style="display:flex;gap:15px;font-size:22px">❤️ 💬 📞 📹</div></div><div class="btm"><b onclick="go(7)">🏠</b><b>🔍</b><b style="background:#FF7A00;color:#fff;width:44px;height:44px;border-radius:50%;display:grid;place-items:center">➕</b><b onclick="go(7)">💬</b><b>👤</b></div></div>
+
+<script>
+function go(n){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('p'+n).classList.add('active');window.scrollTo(0,0);}
+function speak(t){if('speechSynthesis' in window){var u=new SpeechSynthesisUtterance(t);u.lang='ar-SA';speechSynthesis.speak(u);}else{alert(t);}}
+</script>
+</body>
+</html>
